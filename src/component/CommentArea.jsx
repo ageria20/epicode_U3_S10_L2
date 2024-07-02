@@ -53,12 +53,16 @@ const CommentArea = props => {
       {props.asin.length > 0 && (
         <Container className="mb-3">
           <h3>Aggiungi Commento</h3>
-          <AddComment asin={props.asin} />
+          <AddComment asin={props.asin} fetchComments={fetchComments} />
         </Container>
       )}
 
       <h3>Commenti</h3>
-      {comments.length > 0 ? <CommentList comments={comments} /> : <Alert> Non sono presenti recensioni </Alert>}
+      {comments.length > 0 ? (
+        <CommentList comments={comments} fetchComments={fetchComments} />
+      ) : (
+        <Alert> Non sono presenti recensioni </Alert>
+      )}
     </>
   );
 };

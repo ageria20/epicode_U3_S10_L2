@@ -14,6 +14,7 @@ const SingleComment = props => {
       });
       if (resp.ok) {
         alert("Comments Successfully deleted");
+        props.fetchComments();
       } else {
         console.log("Errore nel caricamento dei dati");
       }
@@ -27,7 +28,7 @@ const SingleComment = props => {
       <Row className="justify-content-between align-items-center">
         <Col xs={10} md={10}>
           <span>
-            {props.author} {props.comment} <Badge>{props.rate}</Badge>
+            {props.author} <strong>ha detto:</strong> {props.comment} <Badge>{props.rate}</Badge>
           </span>
         </Col>
         <Col xs={2} md={2}>

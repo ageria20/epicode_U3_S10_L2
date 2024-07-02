@@ -11,6 +11,7 @@ const CommentList = props => {
           author={comment.author}
           rate={comment.rate}
           id={comment._id}
+          fetchComments={props.fetchComments}
         />
       ))}
     </ListGroup>

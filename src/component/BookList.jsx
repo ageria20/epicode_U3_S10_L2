@@ -20,15 +20,6 @@ const BookList = props => {
     <>
       <Row className="justify-content-center mt-5">
         <Col xs={12} md={6} className="text-center">
-          <Form.Group>
-            <Form.Control
-              type="search"
-              placeholder="Cerca un libro"
-              value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
-            />
-          </Form.Group>
-
           <Row className="g-2 mt-3">
             {props.books
               .filter(book => book.title.toLowerCase().includes(searchQuery))
@@ -38,6 +29,14 @@ const BookList = props => {
                 </Col>
               ))}
           </Row>
+          <Form.Group>
+            <Form.Control
+              type="search"
+              placeholder="Cerca un libro"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+            />
+          </Form.Group>
         </Col>
         <Col xs={12} md={6}>
           <CommentArea asin={asin} />
