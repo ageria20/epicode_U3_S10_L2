@@ -1,4 +1,4 @@
-import { Alert, Button, ListGroup, Row, Col, Badge } from "react-bootstrap";
+import { Button, ListGroup, Row, Col, Badge } from "react-bootstrap";
 
 const SingleComment = props => {
   const delComment = async () => {
