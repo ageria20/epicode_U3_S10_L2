@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Card } from "react-bootstrap";
 
 const SingleBook = props => {
@@ -6,17 +5,13 @@ const SingleBook = props => {
   //   isSelected: false,
   // };
 
-  const [isSelected, setIsSelected] = useState(false);
-
   return (
     <>
       <Card
         onClick={() => {
           props.changeAsin(props.book.asin);
-
-          setIsSelected(!isSelected);
         }}
-        style={{ border: isSelected ? "3px solid red" : "none" }}
+        style={{ border: props.book.asin === props.asin ? "3px solid red" : "3px solid transparent" }}
       >
         <Card.Img variant="top" src={props.book.img} />
         <Card.Body>

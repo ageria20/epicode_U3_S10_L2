@@ -1,14 +1,19 @@
 import { ListGroup } from "react-bootstrap";
-import SingleComment from './SingleComment'
-
+import SingleComment from "./SingleComment";
 
 const CommentList = props => {
-    return (
-        <ListGroup>
-        {props.comments.map((comment, index) => <SingleComment key={index} comment={comment.comment} author={comment.author}/>
-)}
-      
-      </ListGroup> 
-    )
-} 
-export default CommentList
+  return (
+    <ListGroup>
+      {props.comments.map((comment, index) => (
+        <SingleComment
+          key={index}
+          comment={comment.comment}
+          author={comment.author}
+          rate={comment.rate}
+          id={comment._id}
+        />
+      ))}
+    </ListGroup>
+  );
+};
+export default CommentList;

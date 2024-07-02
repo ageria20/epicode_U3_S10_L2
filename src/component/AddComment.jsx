@@ -1,20 +1,26 @@
-import { Component } from "react";
+import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
-class AddComment extends Component {
-  state = {
-    newComment: {
-      comment: "",
-      rate: "1",
-      elementId: this.props.asin,
-    },
-  };
+const AddComment = props => {
+  // state = {
+  //   newComment: {
+  //     comment: "",
+  //     rate: "1",
+  //     elementId: this.props.asin,
+  //   },
+  // };
 
-  addComment = e => {
+  const [newComment, setNewComment] = useState({
+    comment: "",
+    rate: "1",
+    elementId: props.asin,
+  });
+
+  const addComment = e => {
     e.preventDefault();
     fetch("https://striveschool-api.herokuapp.com/api/comments/", {
       method: "POST",
-      body: JSON.stringify(this.state.newComment),
+      body: JSON.stringify(newComment),
       headers: {
         "Content-Type": "application/json",
         Authorization:
@@ -23,35 +29,33 @@ class AddComment extends Component {
     }).catch(err => console.log(err));
   };
 
-  render() {
-    return (
-      <Form onSubmit={e => this.addComment(e)}>
-        <Form.Group className="mb-3" controlId="formBasicComment">
-          <Form.Control
-            type="text"
-            placeholder="Commento"
-            value={this.state.newComment.comment}
-            onChange={e => this.setState({ newComment: { ...this.state.newComment, comment: e.target.value } })}
-          />
-        </Form.Group>
-        <Form.Select
-          aria-label="Default select example"
-          value={this.state.newComment.rate}
-          onChange={e => this.setState({ newComment: { ...this.state.newComment, rate: e.target.value } })}
-        >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </Form.Select>
+  return (
+    <Form onSubmit={e => addComment(e)}>
+      <Form.Group className="mb-3" controlId="formBasicComment">
+        <Form.Control
+          type="text"
+          placeholder="Commento"
+          value={newComment.comment}
+          onChange={e => setNewComment({ ...newComment, comment: e.target.value })}
+        />
+      </Form.Group>
+      <Form.Select
+        aria-label="Default select example"
+        value={newComment.rate}
+        onChange={e => setNewComment({ ...newComment, rate: e.target.value })}
+      >
+        <option value="1">⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="5">⭐⭐⭐⭐⭐</option>
+      </Form.Select>
 
-        <Button variant="primary" type="submit" className="mt-3">
-          Invia
-        </Button>
-      </Form>
-    );
-  }
-}
+      <Button variant="primary" type="submit" className="mt-3">
+        Invia
+      </Button>
+    </Form>
+  );
+};
 
 export default AddComment;

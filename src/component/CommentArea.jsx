@@ -32,8 +32,10 @@ const CommentArea = props => {
       console.log(err);
     }
   };
+
   useEffect(() => {
-    fetchComments();
+    if (props.asin) fetchComments();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.asin]);
 
@@ -48,15 +50,15 @@ const CommentArea = props => {
   console.log(props.asin);
   return (
     <>
-      <h3>Commenti</h3>
-      {comments.length > 0 ? <CommentList comments={comments} /> : <Alert> Non sono presenti recensioni </Alert>}
-
       {props.asin.length > 0 && (
-        <Container>
+        <Container className="mb-3">
           <h3>Aggiungi Commento</h3>
           <AddComment asin={props.asin} />
         </Container>
       )}
+
+      <h3>Commenti</h3>
+      {comments.length > 0 ? <CommentList comments={comments} /> : <Alert> Non sono presenti recensioni </Alert>}
     </>
   );
 };
