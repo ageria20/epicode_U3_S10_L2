@@ -13,7 +13,7 @@ const SingleComment = props => {
         },
       });
       if (resp.ok) {
-        return <Alert variant="danger">Comment successfully deleted</Alert>;
+        alert("Comments Successfully deleted");
       } else {
         console.log("Errore nel caricamento dei dati");
       }
