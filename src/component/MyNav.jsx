@@ -5,11 +5,9 @@ import {useState, useEffect} from 'react'
 
 const MyNav = props => {
 
-  const [libraries, setLibraries] = useState([]);
+  
 
-  useEffect(() => {
-    setLibraries(fantasy)
-  }, [])
+
 return (
   <Navbar
     expand="lg"
@@ -24,12 +22,12 @@ return (
           <Nav.Link href="#">Home</Nav.Link>
           <Nav.Link href="#">About</Nav.Link>
           <Nav.Link href="#">Browse</Nav.Link>
-        </Nav>
-        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-          {libraries.map(category => {
+          <NavDropdown title="Categories" id="basic-nav-dropdown">
+          
           <NavDropdown.Item href="#">{category}</NavDropdown.Item>
-        })}
         </NavDropdown>
+
+        </Nav>
       </Navbar.Collapse>
     </Container>
   </Navbar>
